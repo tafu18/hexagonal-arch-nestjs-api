@@ -1,0 +1,96 @@
+{
+  "info": {
+    "name": "Event & Ticket API",
+    "description": "API requests for Event and Ticket modules",
+    "version": "1.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Event",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"event-123\",\n  \"name\": \"Music Festival\",\n  \"description\": \"A fun music festival\",\n  \"date\": \"2024-05-01T18:00:00.000Z\",\n  \"location\": \"Central Park\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/events",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["events"]
+        }
+      }
+    },
+    {
+      "name": "Get Event by ID",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:3000/events/event-123",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["events", "event-123"]
+        }
+      }
+    },
+    {
+      "name": "Create Ticket for Event",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"ticket-456\",\n  \"eventId\": \"event-123\",\n  \"buyerName\": \"John Doe\",\n  \"buyerEmail\": \"john.doe@example.com\",\n  \"price\": 75.50,\n  \"purchasedAt\": \"2024-04-01T10:00:00.000Z\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/tickets",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["tickets"]
+        }
+      }
+    },
+    {
+      "name": "Get Ticket by ID",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:3000/tickets/ticket-456",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["tickets", "ticket-456"]
+        }
+      }
+    },
+    {
+      "name": "Get All Tickets for an Event",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:3000/events/event-123/tickets",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["events", "event-123", "tickets"]
+        }
+      }
+    }
+  ]
+}
+
