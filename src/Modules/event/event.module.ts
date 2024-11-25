@@ -7,6 +7,7 @@ import { EventEntity } from './infrastructure/database/Event.entity';
 import { CreateEventUseCase } from './application/use-cases/CreateEventUseCase';
 import { GetEventUseCase } from './application/use-cases/GetEventUseCase';
 import { GetTicketsByEventIdUseCase } from './application/use-cases/GetTicketsByEventIdUseCase';
+import { GetAllEventUseCase } from './application/use-cases/GetAllEventUseCase';
 
 @Module({
   imports: [TypeOrmModule.forFeature([EventEntity])], // EventEntity, TypeORM için ekleniyor
@@ -16,6 +17,7 @@ import { GetTicketsByEventIdUseCase } from './application/use-cases/GetTicketsBy
     CreateEventUseCase,
     GetEventUseCase,
     GetTicketsByEventIdUseCase,
+    GetAllEventUseCase,
     {
       provide: 'EventRepository', // Bu token EventRepository'yi temsil eder
       useClass: EventRepositoryAdapter, // EventRepositoryAdapter sınıfı kullanılıyor

@@ -56,7 +56,10 @@ export class EventRepositoryAdapter implements EventRepository {
   }
 
   async findAll(): Promise<Event[]> {
-    const events = await this.repository.find();
+    const events = await this.repository.find({
+      relations: ['tickets'],
+    });
+
     return events.map(
       (eventEntity) =>
         ({

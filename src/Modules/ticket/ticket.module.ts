@@ -7,6 +7,7 @@ import { TicketValidationService } from './domain/services/TicketValidationServi
 import { CreateTicketUseCase } from './application/use-cases/CreateTicketUseCase';
 import { GetTicketUseCase } from './application/use-cases/GetTicketUseCase';
 import { TicketEntity } from './infrastructure/database/Ticket.entity';
+import { DeleteTicketUseCase } from './application/use-cases/DeleteTicketUseCase';
 
 @Module({
   imports: [TypeOrmModule.forFeature([TicketEntity])],
@@ -15,6 +16,7 @@ import { TicketEntity } from './infrastructure/database/Ticket.entity';
     TicketValidationService,
     TicketService,
     CreateTicketUseCase,
+    DeleteTicketUseCase,
     {
       provide: 'TicketRepository',
       useClass: TicketRepositoryAdapter,

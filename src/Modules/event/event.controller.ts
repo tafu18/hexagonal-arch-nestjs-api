@@ -25,4 +25,9 @@ export class EventController {
   ): Promise<EventResponseDto> {
     return await this.eventService.getTicketsByEventId(event_id);
   }
+
+  @Get()
+  async getAllEvent() {
+    return this.eventService.getAllEvent();
+  }
 }
