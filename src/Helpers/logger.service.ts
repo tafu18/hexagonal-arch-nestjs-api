@@ -11,7 +11,7 @@ export class LoggerService {
       level: 'info',
       transports: [
         new winston.transports.DailyRotateFile({
-          filename: 'logs/%DATE%-logs.log', // Log dosyalarının adı
+          filename: 'logs/%DATE%.log', // Log dosyalarının adı
           datePattern: 'YYYY-MM-DD', // Dosya isminin her gün değişmesi için tarih formatı
           zippedArchive: true, // Eski log dosyalarını sıkıştırmak
           maxSize: '30m', // Dosya boyutu sınırı
