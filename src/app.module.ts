@@ -1,7 +1,9 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { EventModule } from './Modules/event/event.module';
 import { TicketModule } from './Modules/ticket/ticket.module';
+import { LoggerMiddleware } from './Mİddlewares/api.logger.middleware';
+import { LoggerService } from './Helpers/logger.service';
 
 @Module({
   imports: [
@@ -19,9 +21,10 @@ import { TicketModule } from './Modules/ticket/ticket.module';
     EventModule,
     TicketModule,
   ],
+  providers: [LoggerService],
 })
-export class AppModule {
-  constructor() {
-    console.log(__dirname + '/**/*.entity.ts');
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(LoggerMiddleware).forRoutes('*');
   }
 }
