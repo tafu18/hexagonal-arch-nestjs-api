@@ -48,7 +48,7 @@ export class EventRepositoryAdapter implements EventRepository {
       throw new Error('Event not found');
     }
     const updatedEntity = await this.repository.save(eventEntity);
-    return { ...updatedEntity, canBeUpdated: () => true } as Event; // canBeUpdated eklendi
+    return { ...updatedEntity, canBeUpdated: () => true } as Event;
   }
 
   async delete(id: string): Promise<void> {
@@ -64,8 +64,16 @@ export class EventRepositoryAdapter implements EventRepository {
       (eventEntity) =>
         ({
           ...eventEntity,
-          canBeUpdated: () => true, // canBeUpdated eklendi
+          canBeUpdated: () => true,
         }) as Event,
     );
+  }
+
+  async updatePartial(
+    id: string,
+    updates: Partial<Event>,
+  ): Promise<Event | null> {
+    await this.repository.update(id, updates);
+    return this.findById(id);
   }
 }
